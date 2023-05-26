@@ -1,60 +1,70 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
+    const navigate = useNavigate();
   return (
     <nav className="bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <img
+              {/* <img
                 className="h-8 w-8"
-                src="/logo.png" // Replace with your app logo path
+                src="/logo.png"
                 alt="Logo"
-              />
+              /> */}
+              <h3 className="text-sm font-mono  mb-2 text-orange-500">Expenso</h3>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a
-                  href="/dashboard" // Replace with the appropriate link for your app
+                <Link
+                  to="/expense" 
                   className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Dashboard
-                </a>
-                <a
-                  href="/expenses" // Replace with the appropriate link for your app
+                  Expense Tracker
+                </Link>
+                <Link
+                  to="/income" 
                   className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Expenses
-                </a>
-                <a
-                  href="/income" // Replace with the appropriate link for your app
-                  className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Income
-                </a>
-                <a
-                  href="/reports" // Replace with the appropriate link for your app
+                  Income Tracker
+                </Link>
+                <Link
+                  to="/reports" 
                   className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Reports
-                </a>
-                <a
-                  href="/notifications" // Replace with the appropriate link for your app
+                </Link>
+                <Link
+                  to="/notifications" 
                   className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Notifications
-                </a>
-                <a
-                  href="/admin" // Replace with the appropriate link for your app
+                </Link>
+                <Link
+                  to="/reminder" 
                   className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Admin
-                </a>
+                  Reminder
+                </Link>
+                <Link
+                  to="/budget" 
+                  className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Budget
+                </Link>
               </div>
             </div>
           </div>
-          {/* Add additional elements like user profile, notifications, etc. */}
+          <div className="flex items-center">
+            <a
+              onClick={() => {navigate("/")}}
+              className="text-gray-300 hover:text-white px-4"
+            >
+              Logout
+            </a>
+          </div>
         </div>
       </div>
     </nav>

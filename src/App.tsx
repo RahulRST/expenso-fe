@@ -12,6 +12,7 @@ import Income from "./pages/income";
 import Reports from "./pages/reports";
 import Notifications from "./pages/notifications";
 import Admin from "./pages/admin";
+import Home from "./pages/home";
 import Layout from "./layout";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route element={<Layout><Outlet /></Layout>}>
+          <Route path="/home" element={<Home />} />
           <Route path="/expense" element={<Expense />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/reminder" element={<Reminder />} />
