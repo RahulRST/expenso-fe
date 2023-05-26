@@ -9,6 +9,9 @@ const Budget: React.FC = () => {
   const [amount, setAmount] = useState('');
   const [period, setPeriod] = useState('');
 
+  const [categories, setCategories] = useState<string[]>([]);
+  const [amounts, setAmounts] = useState<number[]>([]);
+
   const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategory(e.target.value);
   };
@@ -23,15 +26,29 @@ const Budget: React.FC = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission
+    setCategories([...categories, category]);
+    setAmounts([...amounts, parseInt(amount)]);
+    data = {
+      labels: categories,
+      datasets: [
+        {
+          label: 'Budget Progress',
+          data: amounts,
+          backgroundColor: 'rgba(255, 159, 64, 0.8)',
+        },
+      ],
+    };
+    setCategory('');
+    setAmount('');
+    setPeriod('');
   };
 
-  const data = {
-    labels: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'],
+  let data: any = {
+    labels: [],
     datasets: [
       {
         label: 'Budget Progress',
-        data: [75, 50, 100, 80, 60],
+        data: [],
         backgroundColor: 'rgba(255, 159, 64, 0.8)',
       },
     ],
