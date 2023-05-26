@@ -6,4 +6,16 @@ const fetchNotifications = async () => {
     return [];
 }
 
-export { fetchReports, fetchNotifications };
+const fetchExpenses = async () => {
+    return [];
+}
+
+const fetchUsers = async () => {
+    return [];
+}
+
+const approveExpense = async (expenseID: any) => {
+    return [expenseID];
+}
+
+export { fetchReports, fetchNotifications, fetchExpenses, fetchUsers, approveExpense };
