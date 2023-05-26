@@ -1,28 +1,28 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const Tracker = () => {
+const Tracker: React.FC = () => {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
 
-  const handleAmountChange = (e: any) => {
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value);
   };
 
-  const handleCategoryChange = (e: any) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategory(e.target.value);
   };
 
-  const handleDescriptionChange = (e: any) => {
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
   };
 
-  const handleDateChange = (e: any) => {
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
   };
 
-  const handleExpenseSubmit = (e: any) => {
+  const handleExpenseSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setAmount('');
@@ -33,11 +33,11 @@ const Tracker = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-900">
-      <div className="bg-white rounded-lg shadow-lg w-96 p-6">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">Expense Tracker</h2>
+      <div className="bg-gray-800 rounded-lg shadow-lg w-96 p-6">
+        <h2 className="text-3xl font-bold mb-4 text-gray-300">Expense Tracker</h2>
         <form onSubmit={handleExpenseSubmit}>
           <div className="mb-4">
-            <label htmlFor="amount" className="block mb-1 text-gray-900">
+            <label htmlFor="amount" className="block mb-1 text-gray-300">
               Amount
             </label>
             <input
@@ -51,7 +51,7 @@ const Tracker = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="category" className="block mb-1 text-gray-900">
+            <label htmlFor="category" className="block mb-1 text-gray-300">
               Category
             </label>
             <input
@@ -65,7 +65,7 @@ const Tracker = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="description" className="block mb-1 text-gray-900">
+            <label htmlFor="description" className="block mb-1 text-gray-300">
               Description
             </label>
             <textarea
@@ -78,7 +78,7 @@ const Tracker = () => {
             ></textarea>
           </div>
           <div className="mb-4">
-            <label htmlFor="date" className="block mb-1 text-gray-900">
+            <label htmlFor="date" className="block mb-1 text-gray-300">
               Date
             </label>
             <input
@@ -92,7 +92,7 @@ const Tracker = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-sm font-medium bg-blue-500 rounded text-white hover:bg-blue-600 focus:outline-none"
+            className="w-full px-4 py-2 text-sm font-medium bg-orange-500 rounded text-white hover:bg-orange-600 focus:outline-none"
           >
             Log Expense
           </button>

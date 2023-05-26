@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/login";
 import Tracker from "./pages/tracker";
+import Budget from "./pages/budget";
 
 const App = () => {
 
@@ -14,7 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/tracker" element={<Tracker />} />
-        <Route path="/dashboard" />
+        <Route path="/budget" element={<Budget />} />
       </Routes>
     </Router>
   )
