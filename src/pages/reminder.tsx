@@ -22,7 +22,7 @@ const Reminder: React.FC = () => {
   return (
     <div className="bg-gray-900 min-h-screen">
       <div className="container mx-auto py-8">
-        <h1 className="text-4xl font-bold text-white mb-6">Payment Reminders</h1>
+        <h1 className="text-4xl font-bold text-orange-500 mb-6">Payment Reminders</h1>
         {reminders.length === 0 ? (
           <p className="text-white">No reminders found.</p>
         ) : (

@@ -52,7 +52,7 @@ const Budget: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
       <div className="max-w-md w-full p-6 bg-gray-800 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6">Budget Management</h2>
+        <h2 className="text-3xl text-orange-500 font-bold mb-6">Budget Management</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label htmlFor="category" className="block mb-2">
@@ -88,7 +88,7 @@ const Budget: React.FC = () => {
               id="period"
               value={period}
               onChange={handlePeriodChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none"
+              className="w-full px-4 py-2 bg-gray-200 text-gray-800 rounded focus:outline-none"
               required
             >
               <option value="">Select Period</option>

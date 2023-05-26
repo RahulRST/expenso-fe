@@ -37,7 +37,7 @@ const IncomeTracker: React.FC = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-900">
       <div className="bg-gray-800 rounded-lg shadow-lg w-96 p-6">
-        <h2 className="text-3xl font-bold mb-4 text-gray-200">Income Tracker</h2>
+        <h2 className="text-3xl font-bold mb-4 text-orange-500">Income Tracker</h2>
         <form onSubmit={handleIncomeSubmit}>
           <div className="mb-4">
             <label htmlFor="amount" className="block mb-1 text-gray-200">

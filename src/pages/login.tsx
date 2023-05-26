@@ -105,7 +105,7 @@ const Login: React.FC = () => {
               Sign In
             </button>
             <a
-              className="inline-block align-baseline font-bold text-sm text-indigo-600 hover:text-indigo-800 cursor-pointer"
+              className="inline-block align-baseline font-bold text-sm text-orange-600 hover:text-orange-800 cursor-pointer"
               href="#"
             >
               Forgot Password?
