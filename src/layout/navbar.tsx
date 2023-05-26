@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Logo from "../assets/logo.svg"
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
@@ -9,12 +10,13 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              {/* <img
-                className="h-8 w-8"
-                src="/logo.png"
+            <Link to="/home">
+              <img
+                className="h-20 w-20"
+                src={Logo}
                 alt="Logo"
-              /> */}
-              <h3 className="text-sm font-mono  mb-2 text-orange-500">Expenso</h3>
+              />
+              </Link>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
