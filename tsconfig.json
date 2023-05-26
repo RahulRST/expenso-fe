@@ -19,6 +19,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "../expenso-be/src/api/auth"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

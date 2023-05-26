@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -33,7 +34,7 @@ const Login: React.FC = () => {
               Username
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-full py-2 px-3 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Username"
@@ -47,7 +48,7 @@ const Login: React.FC = () => {
             </label>
             <div className="relative">
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border rounded w-full py-2 px-3 bg-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
@@ -104,12 +105,12 @@ const Login: React.FC = () => {
             >
               Sign In
             </button>
-            <a
+            <Link
               className="inline-block align-baseline font-bold text-sm text-orange-600 hover:text-orange-800 cursor-pointer"
-              href="#"
+              to="register"
             >
-              Forgot Password?
-            </a>
+              Register
+            </Link>
           </div>
         </div>
         <p className="text-center text-gray-500 text-xs">

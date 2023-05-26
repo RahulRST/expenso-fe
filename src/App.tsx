@@ -5,6 +5,7 @@ import {
   Outlet
 } from "react-router-dom";
 import Login from "./pages/login";
+import Register from "./pages/register";
 import Expense from "./pages/expense";
 import Budget from "./pages/budget";
 import Reminder from "./pages/reminder";
@@ -21,6 +22,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route element={<Layout><Outlet /></Layout>}>
           <Route path="/home" element={<Home />} />
           <Route path="/expense" element={<Expense />} />
