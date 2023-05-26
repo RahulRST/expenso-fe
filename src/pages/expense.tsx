@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Tracker: React.FC = () => {
+const Expense: React.FC = () => {
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -102,4 +102,4 @@ const Tracker: React.FC = () => {
   );
 };
 
-export default Tracker;
+export default Expense;

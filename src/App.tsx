@@ -5,9 +5,10 @@ import {
   Outlet
 } from "react-router-dom";
 import Login from "./pages/login";
-import Tracker from "./pages/tracker";
+import Expense from "./pages/expense";
 import Budget from "./pages/budget";
 import Reminder from "./pages/reminder";
+import Income from "./pages/income";
 
 const App = () => {
 
@@ -15,9 +16,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/tracker" element={<Tracker />} />
+        <Route path="/expense" element={<Expense />} />
         <Route path="/budget" element={<Budget />} />
         <Route path="/reminder" element={<Reminder />} />
+        <Route path="/income" element={<Income />} />
       </Routes>
     </Router>
   )
