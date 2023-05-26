@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -7,6 +8,9 @@ const Register: React.FC = () => {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [contact, setContact] = useState('');
+
+
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -28,18 +32,23 @@ const Register: React.FC = () => {
     setContact(e.target.value);
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Perform registration logic
-    console.log('Registration submitted!');
-    console.log('Username:', username);
-    console.log('Password:', password);
-    console.log('Name:', name);
-    console.log('Address:', address);
-    console.log('Contact:', contact);
-
-    // Reset form fields
+    const data = {
+      username,
+      password,
+      name,
+      address,
+      contact,
+    };
+    const request = await axios.post(import.meta.env.VITE_BACKEND_URL + '/auth/register', data);
+    if(request.status === 200) {
+      navigate('/');
+    }
+    else{
+      console.log(request.data)
+    }
     setUsername('');
     setPassword('');
     setName('');
