@@ -10,6 +10,7 @@ import Budget from "./pages/budget";
 import Reminder from "./pages/reminder";
 import Income from "./pages/income";
 import Reports from "./pages/reports";
+import Notifications from "./pages/notifications";
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/reminder" element={<Reminder />} />
         <Route path="/income" element={<Income />} />
         <Route path="/reports" element={<Reports />} />
+        <Route path="/notifications" element={<Notifications />} />
       </Routes>
     </Router>
   )

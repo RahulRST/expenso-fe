@@ -2,4 +2,8 @@ const fetchReports = async () => {
     return [];
 }
 
-export { fetchReports };
+const fetchNotifications = async () => {
+    return [];
+}
+
+export { fetchReports, fetchNotifications };
