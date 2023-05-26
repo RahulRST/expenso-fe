@@ -5,6 +5,7 @@ import {
   Outlet
 } from "react-router-dom";
 import Login from "./pages/login";
+import Tracker from "./pages/tracker";
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/about" />
+        <Route path="/tracker" element={<Tracker />} />
         <Route path="/dashboard" />
       </Routes>
     </Router>
