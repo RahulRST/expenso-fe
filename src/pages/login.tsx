@@ -1,10 +1,13 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -18,8 +21,22 @@ const Login: React.FC = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleFormSubmit = (e: any) => {
+  const handleFormSubmit = async (e: any) => {
     e.preventDefault();
+    
+    const data = {
+      username,
+      password,
+    };
+    const request = await axios.post(import.meta.env.VITE_BACKEND_URL + '/auth/login', data);
+    
+    if(request.status === 200) {
+      sessionStorage.setItem('expenso_token', request.data.token);
+      navigate('/home');
+    }
+    else{
+      console.log(request.data)
+    }
 
     setUsername('');
     setPassword('');
