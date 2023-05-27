@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { ExpenseCat } from '../data';
+import axios from 'axios';
 
 const Expense: React.FC = () => {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState<Date>(new Date());
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(e.target.value);
+    setAmount(e.target.valueAsNumber);
   };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -19,17 +20,36 @@ const Expense: React.FC = () => {
     setDescription(e.target.value);
   };
 
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDate(e.target.value);
+  const handleDateChange = (e: any) => {
+    setDate(e.target.valueAsDate!);
   };
 
-  const handleExpenseSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleExpenseSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setAmount('');
+    const expense = await axios.post(import.meta.env.VITE_BACKEND_URL+"/track/addexpense", {
+      amount,
+      category,
+      description,
+      date,
+      },
+      {
+        headers: {
+          "Authorization": "Bearer " + sessionStorage.getItem("expenso_token")
+        }
+      }
+    )
+    if(expense.data.success){
+      console.log("Expense added successfully")
+    }
+    else{
+      console.log("Error adding expense")
+    }
+
+    setAmount(0);
     setCategory('');
     setDescription('');
-    setDate('');
+    setDate(new Date());
   };
 
   return (
@@ -89,7 +109,7 @@ const Expense: React.FC = () => {
             <input
               type="date"
               id="date"
-              value={date}
+              value={date.toISOString().slice(0, 10)}
               onChange={handleDateChange}
               className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
               required
