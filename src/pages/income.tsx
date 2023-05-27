@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { IncomeCat } from '../data';
+import axios from 'axios';
 
 const IncomeTracker: React.FC = () => {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState(0);
   const [source, setSource] = useState('');
   const [description, setDescription] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date());
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAmount(e.target.value);
+    setAmount(e.target.valueAsNumber);
   };
 
   const handleSourceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -20,19 +21,34 @@ const IncomeTracker: React.FC = () => {
   };
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDate(e.target.value);
+    setDate(e.target.valueAsDate!);
   };
 
-  const handleIncomeSubmit = (e: React.FormEvent) => {
+  const handleIncomeSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Perform necessary actions with the income data (e.g., send to backend)
-
-    // Reset the form fields
-    setAmount('');
+    const income = await axios.post(import.meta.env.VITE_BACKEND_URL+"/track/addincome", {
+      amount,
+      source,
+      description,
+      date,
+      },
+      {
+        headers: {
+          "Authorization": "Bearer " + sessionStorage.getItem("expenso_token")
+        }
+      }
+    )
+    if(income.data.success){
+      console.log("Income added successfully")
+    }
+    else{
+      console.log("Error adding income")
+    }
+    setAmount(0);
     setSource('');
     setDescription('');
-    setDate('');
+    setDate(new Date());
   };
 
   return (
@@ -92,7 +108,7 @@ const IncomeTracker: React.FC = () => {
             <input
               type="date"
               id="date"
-              value={date}
+              value={date.toISOString().slice(0, 10)}
               onChange={handleDateChange}
               className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
               required
