@@ -15,7 +15,7 @@ const Notifications: React.FC = () => {
     };
 
     fetchNotificationsData();
-  }, []);
+  }, [message, date]);
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
@@ -48,7 +48,7 @@ const Notifications: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-900">
+    <div className="flex items-center gap-x-6 justify-center h-screen bg-gray-900">
       <div className='bg-gray-800 rounded-lg shadow-lg w-96 p-6'>
         <h2 className='text-3xl font-bold mb-4 text-orange-500'>Add Notifications</h2>
         <form onSubmit={handleNotificationSubmit}>
@@ -91,15 +91,13 @@ const Notifications: React.FC = () => {
       <div className="bg-gray-800 rounded-lg shadow-lg w-96 p-6">
         <h2 className="text-3xl font-bold mb-4 text-orange-500">Notifications and Announcements</h2>
         {notifications.length > 0 ? (
-          <div>
+          <div className='flex flex-row flex-wrap gap-6'>
             {/* Render the notifications here */}
-            {notifications.map((notification) => (
-              <div key={notification.id} className="mb-4">
-                <h3 className="text-lg font-bold mb-2 text-orange-500">{notification.title}</h3>
-                {/* Render the notification details */}
-                <p className="text-gray-300">{notification.message}</p>
+            {notifications.map(({ id, message, date }) => (
+              <div key={id} className="mb-4">
+                <h3 className="text-lg font-bold mb-2 text-orange-500">{message}</h3>
                 {/* Render additional notification information */}
-                <p className="text-gray-400">{notification.date}</p>
+                <p className="text-gray-400">{date.toString().slice(0,10)}</p>
               </div>
             ))}
           </div>

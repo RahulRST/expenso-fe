@@ -36,16 +36,16 @@ const Analytics: React.FC = () => {
           labels.push(expense.description)
           datasets.push(expense.amounts)
         })
-        const renderExpenses = {
-          const data = {
-            labels: expense.description,
-            datasets: [
-              {
-                label: 'Budget Progress',
-                data: expense.amounts,
-                backgroundColor: 'rgba(255, 159, 64, 0.8)',
-              },
-          }
+        // const renderExpenses = {
+        //   const data = {
+        //     labels: expense.description,
+        //     datasets: [
+        //       {
+        //         label: 'Budget Progress',
+        //         data: expense.amounts,
+        //         backgroundColor: 'rgba(255, 159, 64, 0.8)',
+        //       },
+        //   }
         // setCategories(budget.data.budget.categories)
         // setAmounts(budget.data.budget.amounts)
       }
