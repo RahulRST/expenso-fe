@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ExpenseCat } from '../data';
 
 const Expense: React.FC = () => {
   const [amount, setAmount] = useState('');
@@ -10,7 +11,7 @@ const Expense: React.FC = () => {
     setAmount(e.target.value);
   };
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
   };
 
@@ -54,15 +55,19 @@ const Expense: React.FC = () => {
             <label htmlFor="category" className="block mb-1 text-gray-300">
               Category
             </label>
-            <input
-              type="text"
-              id="category"
+            <select
               value={category}
               onChange={handleCategoryChange}
               className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
-              placeholder="Enter category"
               required
-            />
+            >
+              <option value="">Select category</option>
+              {ExpenseCat.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block mb-1 text-gray-300">

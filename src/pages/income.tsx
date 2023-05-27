@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IncomeCat } from '../data';
 
 const IncomeTracker: React.FC = () => {
   const [amount, setAmount] = useState('');
@@ -10,7 +11,7 @@ const IncomeTracker: React.FC = () => {
     setAmount(e.target.value);
   };
 
-  const handleSourceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSourceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSource(e.target.value);
   };
 
@@ -57,15 +58,19 @@ const IncomeTracker: React.FC = () => {
             <label htmlFor="source" className="block mb-1 text-gray-200">
               Source
             </label>
-            <input
-              type="text"
-              id="source"
+            <select
               value={source}
               onChange={handleSourceChange}
               className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
-              placeholder="Enter source"
               required
-            />
+            >
+              <option value="">Select income source</option>
+              {IncomeCat.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block mb-1 text-gray-200">
