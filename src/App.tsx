@@ -10,7 +10,6 @@ import Expense from "./pages/expense";
 import Budget from "./pages/budget";
 import Reminder from "./pages/reminder";
 import Income from "./pages/income";
-import Reports from "./pages/reports";
 import Notifications from "./pages/notifications";
 import Admin from "./pages/admin";
 import Home from "./pages/home";
@@ -29,7 +28,6 @@ const App = () => {
           <Route path="/budget" element={<Budget />} />
           <Route path="/reminder" element={<Reminder />} />
           <Route path="/income" element={<Income />} />
-          <Route path="/reports" element={<Reports />} />
           <Route path="/notifications" element={<Notifications />} />
         </Route>
 
