@@ -45,10 +45,10 @@ const Navbar: React.FC = () => {
                   Reminder
                 </Link>
                 <Link
-                  to="/budget" 
+                  to="/analytics" 
                   className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  Budget
+                  Analytics
                 </Link>
               </div>
             </div>
