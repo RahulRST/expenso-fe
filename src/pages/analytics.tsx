@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Chart, BarElement, LinearScale, CategoryScale } from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
+import axios from 'axios';
 
 Chart.register(BarElement, LinearScale, CategoryScale);
 
 const Analytics: React.FC = () => {
   
-  const [category, setCategory] = useState('');
-  const [amount, setAmount] = useState('');
-  const [period, setPeriod] = useState('');
+  const [categories, setCategories] = useState<string[]>([]);
+  const [amounts, setAmounts] = useState<number[]>([]);
 
   let data: any = {
     labels: [],
@@ -21,8 +21,24 @@ const Analytics: React.FC = () => {
     ],
   };
 
-  const [categories, setCategories] = useState<string[]>([]);
-  const [amounts, setAmounts] = useState<number[]>([]);
+  useEffect(() => {
+    const getBudget = async () => {
+      const budget = await axios.get(import.meta.env.VITE_BACKEND_URL+"/budget/getbudget", {
+        headers: {
+          "Authorization": "Bearer " + sessionStorage.getItem("expenso_token")
+        }
+      })
+      if(budget.data.success){
+        console.log("Budget fetched successfully",budget.data)
+        setCategories(budget.data.budget.categories)
+        setAmounts(budget.data.budget.amounts)
+      }
+      else{
+        console.log("Error fetching budget")
+      }
+    }
+    getBudget()
+  }, [])
 
 
   const options = {
