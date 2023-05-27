@@ -6,12 +6,10 @@ import {
 } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
-import Admin from "./pages/admin";
 import Home from "./pages/home";
 import Layout from "./layout";
 
 const App = () => {
-
   return (
     <Router>
       <Routes>
@@ -20,7 +18,6 @@ const App = () => {
         <Route element={<Layout><Outlet /></Layout>}>
           <Route path="/home" element={<Home />} />
         </Route>
-        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   )

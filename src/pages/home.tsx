@@ -229,7 +229,7 @@ const Income: React.FC = () => {
   return (
     <div className="flex items-center justify-center bg-gray-900">
       <div className="bg-gray-800 rounded-lg shadow-lg w-96 p-6">
-        <h2 className="text-3xl font-bold mb-4 text-orange-500">Income Tracker</h2>
+        <h2 className="text-3xl font-bold mb-4 text-[#42a2a5]">Income Tracker</h2>
         <form onSubmit={handleIncomeSubmit}>
           <div className="mb-4">
             <label htmlFor="amount" className="block mb-1 text-gray-200">
@@ -291,7 +291,7 @@ const Income: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-sm font-medium bg-orange-500 rounded text-white hover:bg-orange-600 focus:outline-none"
+            className="w-full px-4 py-2 text-sm font-medium bg-[#42a2a5] rounded text-white hover:bg-[#2f8285] focus:outline-none"
           >
             Log Income
           </button>
@@ -377,7 +377,7 @@ const Home = () => {
       let amounts: any = [];
       let maxAmount = 0;
       let totalIncome = 0;
-      
+
       incomeData.forEach((income: any) => {
         if(income.amount > maxAmount){
           maxAmount = income.amount
@@ -430,7 +430,7 @@ const Home = () => {
     const IncomeAnalytics = () => {
       return (
         <div className="bg-gray-800 rounded-lg shadow-lg p-4">
-          <h3 className="text-2xl font-bold mb-4 text-[#21aeb1]">Income Analytics</h3>
+          <h3 className="text-2xl font-bold mb-4 text-[#42a2a5]">Income Analytics</h3>
           <IncomeChart />
         </div>
       );
