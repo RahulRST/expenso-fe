@@ -9,7 +9,6 @@ import Register from "./pages/register";
 import Expense from "./pages/expense";
 import Reminder from "./pages/reminder";
 import Income from "./pages/income";
-import Notifications from "./pages/notifications";
 import Admin from "./pages/admin";
 import Home from "./pages/home";
 import Layout from "./layout";
@@ -26,7 +25,6 @@ const App = () => {
           <Route path="/expense" element={<Expense />} />
           <Route path="/reminder" element={<Reminder />} />
           <Route path="/income" element={<Income />} />
-          <Route path="/notifications" element={<Notifications />} />
         </Route>
 
         <Route path="/admin" element={<Admin />} />

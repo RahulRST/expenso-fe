@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Chart, BarElement, LinearScale, CategoryScale } from 'chart.js/auto';
 import { Bar } from "react-chartjs-2";
+
+Chart.register(BarElement, LinearScale, CategoryScale);
 
 const Home = () => {
   const [ expenseData, setExpenseData ] = useState<any[]>([]);
@@ -64,7 +67,6 @@ const Home = () => {
 
     return (
       <div className="w-full">
-        <h3 className="text-lg font-bold mb-4">Expense Progress</h3>
         <Bar data={data} options={options} />
       </div>
     );
@@ -108,7 +110,6 @@ const Home = () => {
 
     return (
       <div className="w-full">
-        <h3 className="text-lg font-bold mb-4">Income Progress</h3>
         <Bar data={data} options={options} />
       </div>
     );
@@ -126,7 +127,7 @@ const Home = () => {
     const IncomeAnalytics = () => {
       return (
         <div className="bg-gray-800 rounded-lg shadow-lg p-4">
-          <h3 className="text-2xl font-bold mb-4 text-orange-500">Income Analytics</h3>
+          <h3 className="text-2xl font-bold mb-4 text-[#21aeb1]">Income Analytics</h3>
           <IncomeChart />
         </div>
       );
@@ -134,7 +135,7 @@ const Home = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen">
-      <div className="container mx-auto py-8 px-4">
+      <div className="container mx-auto items-center py-8 px-4">
         <h2 className="text-4xl font-bold text-white mb-4">Welcome to Your Dashboard</h2>
         <p className="text-gray-300 mb-8">
           This gives you the graphical representation of your budget and expenses.

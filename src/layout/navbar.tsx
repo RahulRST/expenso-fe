@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.svg';
+import Notification from './notification';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
@@ -79,9 +80,10 @@ const Navbar: React.FC = () => {
             </button>
           </div>
           <div className="flex items-center">
+            <Notification />
             <button
               onClick={handleLogout}
-              className="text-gray-300 hover:text-white px-4"
+              className="hover:text-gray-300 bg-orange-500 hover:bg-transparent text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Logout
             </button>
