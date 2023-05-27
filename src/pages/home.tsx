@@ -304,24 +304,32 @@ const Income: React.FC = () => {
 const Home = () => {
   const [ expenseData, setExpenseData ] = useState<any[]>([]);
   const [ incomeData, setIncomeData ] = useState<any[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const getBudget = async () => {
-      const budget = await axios.get(import.meta.env.VITE_BACKEND_URL+"/fetch/analytics", {
-        headers: {
-          "Authorization": "Bearer " + sessionStorage.getItem("expenso_token")
-        }
-      })
-      if(budget.data.success){
-        console.log("Budget fetched successfully",budget.data)
-        setExpenseData(budget.data.expenses)
-        setIncomeData(budget.data.incomes)
-      }
-      else{
-        console.log("Error fetching budget")
-      }
+    const token = sessionStorage.getItem("expenso_token")
+    if(!token){
+      navigate("/")
     }
-    getBudget()
+    else
+    {
+      const getBudget = async () => {
+        const budget = await axios.get(import.meta.env.VITE_BACKEND_URL+"/fetch/analytics", {
+          headers: {
+            "Authorization": "Bearer " + sessionStorage.getItem("expenso_token")
+          }
+        })
+        if(budget.data.success){
+          console.log("Budget fetched successfully",budget.data)
+          setExpenseData(budget.data.expenses)
+          setIncomeData(budget.data.incomes)
+        }
+        else{
+          console.log("Error fetching budget")
+        }
+      }
+      getBudget()
+    }
   }, [])
 
     const ExpenseChart = () => {
