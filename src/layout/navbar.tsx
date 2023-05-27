@@ -40,12 +40,6 @@ const Navbar: React.FC = () => {
                 >
                   Income Tracker
                 </Link>
-                <Link
-                  to="/notifications"
-                  className="text-gray-300 hover:bg-orange-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Notifications
-                </Link>
               </div>
             </div>
           </div>
@@ -104,12 +98,6 @@ const Navbar: React.FC = () => {
               className="text-gray-300 hover:bg-orange-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
             >
               Income Tracker
-            </Link>
-            <Link
-              to="/notifications"
-              className="text-gray-300 hover:bg-orange-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Notifications
             </Link>
           </div>
         </div>
