@@ -7,7 +7,6 @@ import {
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Expense from "./pages/expense";
-import Analytics from "./pages/analytics";
 import Reminder from "./pages/reminder";
 import Income from "./pages/income";
 import Notifications from "./pages/notifications";
@@ -25,7 +24,6 @@ const App = () => {
         <Route element={<Layout><Outlet /></Layout>}>
           <Route path="/home" element={<Home />} />
           <Route path="/expense" element={<Expense />} />
-          <Route path="/analytics" element={<Analytics />} />
           <Route path="/reminder" element={<Reminder />} />
           <Route path="/income" element={<Income />} />
           <Route path="/notifications" element={<Notifications />} />
