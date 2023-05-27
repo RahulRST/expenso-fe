@@ -23,15 +23,31 @@ const Analytics: React.FC = () => {
 
   useEffect(() => {
     const getBudget = async () => {
-      const budget = await axios.get(import.meta.env.VITE_BACKEND_URL+"/budget/getbudget", {
+      const budget = await axios.get(import.meta.env.VITE_BACKEND_URL+"/analysis", {
         headers: {
           "Authorization": "Bearer " + sessionStorage.getItem("expenso_token")
         }
       })
       if(budget.data.success){
         console.log("Budget fetched successfully",budget.data)
-        setCategories(budget.data.budget.categories)
-        setAmounts(budget.data.budget.amounts)
+        const labels = []
+        const datasets = []
+        budget.data.expenses.forEach((expense: any) => {
+          labels.push(expense.description)
+          datasets.push(expense.amounts)
+        })
+        const renderExpenses = {
+          const data = {
+            labels: expense.description,
+            datasets: [
+              {
+                label: 'Budget Progress',
+                data: expense.amounts,
+                backgroundColor: 'rgba(255, 159, 64, 0.8)',
+              },
+          }
+        // setCategories(budget.data.budget.categories)
+        // setAmounts(budget.data.budget.amounts)
       }
       else{
         console.log("Error fetching budget")

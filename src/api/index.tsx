@@ -1,4 +1,5 @@
 const fetchNotifications = async () => {
+    const notifications = await axios.get(import.meta.env.VITE_BACKEND_URL+"/track/notifications", {
     return [];
 }
 
