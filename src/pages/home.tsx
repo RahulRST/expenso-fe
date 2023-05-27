@@ -95,7 +95,7 @@ const Expense: React.FC = () => {
               id="amount"
               value={amount}
               onChange={handleAmountChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter amount"
             />
           </div>
@@ -106,7 +106,7 @@ const Expense: React.FC = () => {
             <select
               value={category}
               onChange={handleCategoryChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
             >
               <option value="">Select category</option>
               {ExpenseCat.map((category) => (
@@ -124,7 +124,7 @@ const Expense: React.FC = () => {
               id="description"
               value={description}
               onChange={handleDescriptionChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter description"
               rows={3}
             ></textarea>
@@ -138,7 +138,7 @@ const Expense: React.FC = () => {
               id="date"
               value={date.toISOString().slice(0, 10)}
               onChange={handleDateChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
             />
           </div>
           <div className="mb-4">
@@ -240,7 +240,7 @@ const Income: React.FC = () => {
               id="amount"
               value={amount}
               onChange={handleAmountChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter amount"
             />
           </div>
@@ -251,7 +251,7 @@ const Income: React.FC = () => {
             <select
               value={source}
               onChange={handleSourceChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
             >
               <option value="">Select income source</option>
               {IncomeCat.map((category) => (
@@ -269,7 +269,7 @@ const Income: React.FC = () => {
               id="description"
               value={description}
               onChange={handleDescriptionChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter description"
               rows={3}
             ></textarea>
@@ -283,7 +283,7 @@ const Income: React.FC = () => {
               id="date"
               value={date.toISOString().slice(0, 10)}
               onChange={handleDateChange}
-              className="w-full px-4 py-2 bg-gray-200 rounded focus:outline-none focus:bg-white"
+              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
             />
           </div>
           <div className="mb-4">
