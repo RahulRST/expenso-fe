@@ -157,9 +157,9 @@ const Expense: React.FC = () => {
 };
 
 const Income: React.FC = () => {
-  const [amount, setAmount] = useState(0);
-  const [source, setSource] = useState('');
-  const [description, setDescription] = useState('');
+  const [ amount, setAmount ] = useState(0);
+  const [ source, setSource ] = useState('');
+  const [ description, setDescription ] = useState('');
   const [date, setDate] = useState(new Date());
   const [ info, setInfo ] = useState<any>([]);
   const navigate = useNavigate();
@@ -328,12 +328,14 @@ const Home = () => {
 
       let categories: any = [];
       let amounts: any = [];
+      let totalExpense = 0;
       let maxAmount = 0;
 
       expenseData.forEach((expense: any) => {
         if(expense.amount > maxAmount){
           maxAmount = expense.amount
         }
+        totalExpense = totalExpense + expense.amount
         categories.push(expense.description)
         amounts.push(expense.amount)
       })
@@ -364,6 +366,7 @@ const Home = () => {
       return (
         <div className="w-96">
           <Bar data={data} options={options} />
+          <h2 className="text-lg text-center font-bold mb-4 text-orange-500">Total Expense: {totalExpense}</h2>
         </div>
       );
     }
@@ -373,10 +376,13 @@ const Home = () => {
       let categories: any = [];
       let amounts: any = [];
       let maxAmount = 0;
+      let totalIncome = 0;
+      
       incomeData.forEach((income: any) => {
         if(income.amount > maxAmount){
           maxAmount = income.amount
         }
+        totalIncome = totalIncome + income.amount
         categories.push(income.description)
         amounts.push(income.amount)
       })
@@ -407,6 +413,7 @@ const Home = () => {
       return (
         <div className="w-96">
           <Bar data={data} options={options} />
+          <h2 className="text-lg font-bold text-center text-[#42a2a5] mt-4">Total Income: {totalIncome}</h2>
         </div>
       );
     }
@@ -436,8 +443,8 @@ const Home = () => {
         <p className="text-gray-300 text-center mb-8">
           This gives you the graphical representation of your budget and expenses.
         </p>
-        <div className="flex flex-row items-center justify-around flex-wrap gap-4">
-          <div className="flex flex-col flex-wrap gap-4">
+        <div className="flex flex-col items-center justify-around flex-wrap gap-10">
+          <div className="flex flex-row flex-wrap gap-10">
             {/* <h2 className="text-2xl text-center font-bold text-white mb-4">Analytics</h2> */}
             <ExpenseAnalytics />
             <IncomeAnalytics />
