@@ -180,9 +180,11 @@ const Register: React.FC = () => {
                 Login
             </Link>
           </div>
-
         </form>
       </div>
+      <p className="text-center my-4 text-gray-500 text-xs">
+          &copy;2023 Expenso. All rights reserved.
+      </p>
     </div>
   );
 };
