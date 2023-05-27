@@ -1,13 +1,16 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { Link, useNavigate } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [contact, setContact] = useState('');
+  const [ error, setError ] = useState<string>('');
 
 
   const navigate = useNavigate();
@@ -18,6 +21,10 @@ const Register: React.FC = () => {
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
+  };
+
+  const handleShowPasswordToggle = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,33 +40,54 @@ const Register: React.FC = () => {
   };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    try
+    {
+      e.preventDefault();
+      if(username === '' || password === '' || name === '' || address === '' || contact === '')
+      {
+        setError('Please fill all the fields')
+      }
+      else
+      {
+        const data = {
+          username,
+          password,
+          name,
+          address,
+          contact,
+        };
+        const request = await axios.post(import.meta.env.VITE_BACKEND_URL + '/auth/register', data);
+        if(request.status === 200) {
+          navigate('/');
+        }
+        else{
+          console.log(request.data)
+          setError(request.data.message)
+        }
+      }
 
-    const data = {
-      username,
-      password,
-      name,
-      address,
-      contact,
-    };
-    const request = await axios.post(import.meta.env.VITE_BACKEND_URL + '/auth/register', data);
-    if(request.status === 200) {
-      navigate('/');
     }
-    else{
-      console.log(request.data)
+    catch(err: any)
+    {
+      console.log(err.response.data.message)
+      setError(err.response.data.message)
     }
-    setUsername('');
-    setPassword('');
-    setName('');
-    setAddress('');
-    setContact('');
+    finally
+    {
+      setUsername('');
+      setPassword('');
+      setName('');
+      setAddress('');
+      setContact('');
+    }
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-900">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900">
+      <h2 className="text-3xl font-bold mb-4 text-orange-500">Expenso</h2>
+      <h2 className="text-xl font-bold mb-4 text-white">Register</h2>
       <div className="bg-gray-800 rounded-lg shadow-lg w-96 p-6">
-        <h2 className="text-3xl font-bold mb-4 text-white">Register</h2>
+      
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label htmlFor="name" className="block mb-1 text-white">
@@ -72,7 +100,6 @@ const Register: React.FC = () => {
               onChange={handleNameChange}
               className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter name"
-              required
             />
           </div>
           <div className="mb-4">
@@ -86,7 +113,6 @@ const Register: React.FC = () => {
               onChange={handleAddressChange}
               className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter address"
-              required
             />
           </div>
           <div className="mb-4">
@@ -94,13 +120,12 @@ const Register: React.FC = () => {
               Contact
             </label>
             <input
-              type="text"
+              type="number"
               id="contact"
               value={contact}
               onChange={handleContactChange}
               className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter contact"
-              required
             />
           </div>
           <div className="mb-4">
@@ -114,22 +139,32 @@ const Register: React.FC = () => {
               onChange={handleUsernameChange}
               className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
               placeholder="Enter username"
-              required
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="password" className="block mb-1 text-white">
+          <div className="mb-6">
+            <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={handlePasswordChange}
-              className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
-              placeholder="Enter password"
-              required
-            />
+            <div className="relative">
+              <input
+                className="w-full px-4 py-2 bg-gray-700 rounded text-white focus:outline-none"
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <div
+                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                onClick={handleShowPasswordToggle}
+              >
+                {showPassword ? ( <BsFillEyeSlashFill className="text-gray-300 cursor-pointer" />
+                ) : (
+                  <BsFillEyeFill className="text-gray-300 cursor-pointer" />  
+                )}
+              </div>
+            </div>
+            {error?<p className='text-red-500 text-xs italic'>{error}</p>:null}
           </div>
           <div className='flex flex-row justify-between items-center'>
             <button

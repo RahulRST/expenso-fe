@@ -51,14 +51,16 @@ const Login: React.FC = () => {
           console.log(error)
         }
       }
-
-      setUsername('');
-      setPassword('');
     }
     catch(err: any)
     {
       setError(err.response.data.message)
       console.log(err)
+    }
+    finally
+    {
+      setUsername('');
+      setPassword('');
     }
   };
 
@@ -66,7 +68,7 @@ const Login: React.FC = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
       <div className="w-full max-w-sm">
         <h2 className="text-3xl text-center font-bold mb-4 text-orange-500">Expenso</h2>
-        <h2 className='text-xl text-center font-bold mb-4 text-orange-500'>Login</h2>
+        <h2 className='text-xl text-center font-bold mb-4 text-white'>Login</h2>
         <div className="bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label className="block text-gray-300 text-sm font-bold mb-2" htmlFor="username">
